@@ -18,17 +18,22 @@ app.add_middleware(
     allow_headers=['*']
 )
 
+
 @app.get('/search')
-def search(q, f):   
-    return ytmusic.search(q, f)
+def search(q, f):
+    if (f == ''):
+        return ytmusic.search(q)
+    else:
+        return ytmusic.search(q, f)
 
 
 @app.get('/search_recommend')
 def search_recommend(q):
-    search_recommend = ytmusic.get_search_suggestions(q)    
+    search_recommend = ytmusic.get_search_suggestions(q)
     return search_recommend
 
+
 @app.get('/song/{videoId}')
-def get_song(videoId):    
+def get_song(videoId):
     song = ytmusic.get_song(videoId)
     return song
