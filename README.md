@@ -5,4 +5,4 @@
 # Used Libraries
 - Python3
 - FastAPI
-- Unicorn 
+- Uvicorn 
