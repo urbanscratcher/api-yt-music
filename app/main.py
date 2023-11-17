@@ -2,17 +2,16 @@ from typing import Union
 from ytmusicapi import YTMusic
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 ytmusic = YTMusic('oauth.json')
 app = FastAPI()
 
-origins = [
-    'http://localhost:5173'
-]
+print(os.environ.get('ORIGIN'))
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=os.environ.get('ORIGIN'),
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*']
