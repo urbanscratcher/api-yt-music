@@ -7,11 +7,15 @@ import os
 ytmusic = YTMusic('oauth.json')
 app = FastAPI()
 
-print(os.environ.get('ORIGIN'))
+# Print the ORIGIN environment variable for debugging
+print("Allowed origins:", os.environ.get('ORIGINS'))
+
+# Convert the ORIGIN environment variable to a list
+origins = os.environ.get('ORIGINS', '').split(',')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.environ.get('ORIGIN'),
+    allow_origins=os.environ.get('ORIGINS'),
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*']
