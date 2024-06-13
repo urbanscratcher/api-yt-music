@@ -15,7 +15,7 @@ origins = os.environ.get('ORIGINS', '').split(',')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.environ.get('ORIGINS'),
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*']
